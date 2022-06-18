@@ -7,7 +7,8 @@
 ### Client :
 
 1. Make a application where people can buy one or multiple ticket at a time.
-2. People can update their ticket name
+2. People can update their Profile
+3. People can update their ticket name
 
 ### Admin:
 
@@ -30,15 +31,16 @@
 
 - Ticket ID => ID
 - Price => Number
-- IsSold => Boolean
+- USer ID => String (Not Required)
+- IsSold => Boolean (Default = false)
 - Created At => Date
 - Updated At =>> Date
 
-### Purchases
+### Order
 
 - Ticket => Object
 - User => ID
-- IsPaid => Boolean
+- IsPaid => Boolean (Default = false)
 - Created AT => Date
 
 ### Draw
@@ -49,7 +51,7 @@
 
 ### DrawTime
 
-- Limit => number
+- Limit => Number
 
 ## Routes
 
@@ -67,6 +69,7 @@
 - /tickets/create => post (Admin)
 - /tickets/bulk?cq=5 => post (Admin)
 - /tickets/:ticketId => Patch (Admin)
+- /tickets => Put (Admin)
 - /tickets/:ticketId => Delete (Admin)
 - /tickets => Delete (Admin)
 - /tickets/id/:ticketId => Get (Admin)
@@ -74,13 +77,18 @@
 
 ### Purchase
 
-- /tickets/purchase/ => Post (User)
-- /tickets/purchase/ => Get (Admin)
-- /tickets/purchase/id/:userID => Get (User / Admin)
-- /tickets/purchase/user/:userName => Get (Admin)
-- /tickets/purchase => Delete (Admin)
+- /tickets/order/ => Post (User)
+- /tickets/order/ => Get (Admin)
+- /tickets/order/id/:userID => Get (User / Admin)
+- /tickets/order/id/:userID => Patch (User / Admin)
+- /tickets/order/user/:userName => Get (Admin)
+- /tickets/order => Delete (Admin)
 
 ### Draw
 
 - /draw?wc=3 => Post (Admin)
 - /draw/winners => Get (User / Admin)
+
+### DrawLimit
+
+- /drawlimit => Post (Admin)
